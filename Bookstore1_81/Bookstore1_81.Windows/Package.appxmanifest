@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
+  <Identity Name="79be15fc-b00d-402e-a777-9c24e8323715" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>Bookstore1_81.Windows</DisplayName>
+    <PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Bookstore1_81.Windows.App">
+      <m2:VisualElements DisplayName="Bookstore1_81.Windows" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="This is the &quot;before&quot; app in a case study of porting a very simple universal Windows and Windows Phone 8.1 app to a Windows 10 app. The app consists of a ListBox bound to a view model. The view model has a list of books that shows title, author, and book cover." ForegroundText="light" BackgroundColor="#00b2f0">
+        <m2:DefaultTile ShortName="Bookstore1">
+          <m2:ShowNameOnTiles>
+            <m2:ShowOn Tile="square150x150Logo" />
+          </m2:ShowNameOnTiles>
+        </m2:DefaultTile>
+        <m2:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#00b2f0" />
+      </m2:VisualElements>
+    </Application>
+  </Applications>
+</Package>
