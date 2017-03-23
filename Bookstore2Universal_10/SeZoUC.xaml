@@ -1,0 +1,94 @@
+﻿<!--
+    Copyright (c) Microsoft Corporation. All rights reserved.
+    Use of this sample source code is subject to the terms of the Microsoft license 
+    agreement under which you licensed this sample source code and is provided AS-IS.
+    If you did not accept the terms of the license agreement, you are not authorized 
+    to use this sample source code.  For the terms of the license, please see the 
+    license agreement between you and Microsoft.
+  
+    To see all code Samples for Windows Store apps and Windows Phone Store apps, visit http://code.msdn.microsoft.com/windowsapps
+  
+-->
+
+<UserControl
+    x:Class="Bookstore2Universal_10.SeZoUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Bookstore2Universal_10"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="BookstoreStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <CollectionViewSource
+            x:Name="AuthorHasACollectionOfBookSku"
+            Source="{Binding Authors}"
+            IsSourceGrouped="true"
+			ItemsPath="BookSkus"/>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="548"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="wideSeZo.Visibility" Value="Visible"/>
+                        <Setter Target="narrowSeZo.Visibility" Value="Collapsed"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <SemanticZoom x:Name="wideSeZo" Visibility="Collapsed">
+            <SemanticZoom.ZoomedInView>
+                <GridView
+				ItemsSource="{Binding Source={StaticResource AuthorHasACollectionOfBookSku}}"
+				ItemTemplate="{StaticResource BookTemplateWide}"
+				ItemsPanel="{StaticResource ZoomedInItemsPanelTemplate}">
+                    <GridView.GroupStyle>
+                        <GroupStyle
+						HeaderTemplate="{StaticResource AuthorGroupHeaderTemplateWide}"
+						HidesIfEmpty="True"/>
+                    </GridView.GroupStyle>
+                </GridView>
+            </SemanticZoom.ZoomedInView>
+            <SemanticZoom.ZoomedOutView>
+                <GridView
+				ItemsSource="{Binding CollectionGroups, Source={StaticResource AuthorHasACollectionOfBookSku}}"
+				ItemTemplate="{StaticResource ZoomedOutAuthorTemplateWide}"/>
+            </SemanticZoom.ZoomedOutView>
+        </SemanticZoom>
+
+        <SemanticZoom x:Name="narrowSeZo">
+            <SemanticZoom.ZoomedInView>
+                <ListView
+				ItemsSource="{Binding Source={StaticResource AuthorHasACollectionOfBookSku}}"
+				ItemTemplate="{StaticResource BookTemplate}">
+                    <ListView.GroupStyle>
+                        <GroupStyle
+						HeaderContainerStyle="{StaticResource AuthorGroupHeaderContainerStyle}"
+						HeaderTemplate="{StaticResource AuthorGroupHeaderTemplate}"
+						HidesIfEmpty="True"/>
+                    </ListView.GroupStyle>
+                </ListView>
+            </SemanticZoom.ZoomedInView>
+            <SemanticZoom.ZoomedOutView>
+                <ListView
+				ItemsSource="{Binding CollectionGroups, Source={StaticResource AuthorHasACollectionOfBookSku}}"
+				ItemTemplate="{StaticResource ZoomedOutAuthorTemplate}"
+				ItemContainerStyle="{StaticResource ZoomedOutAuthorItemContainerStyle}"/>
+            </SemanticZoom.ZoomedOutView>
+        </SemanticZoom>
+
+    </Grid>
+</UserControl>
