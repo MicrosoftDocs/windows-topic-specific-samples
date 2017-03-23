@@ -1,0 +1,56 @@
+﻿<!--
+    Copyright (c) Microsoft Corporation. All rights reserved.
+    Use of this sample source code is subject to the terms of the Microsoft license 
+    agreement under which you licensed this sample source code and is provided AS-IS.
+    If you did not accept the terms of the license agreement, you are not authorized 
+    to use this sample source code.  For the terms of the license, please see the 
+    license agreement between you and Microsoft.
+  
+    To see all code Samples for Windows Store apps and Windows Phone Store apps, visit http://code.msdn.microsoft.com/windowsapps
+  
+-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Windows_UI_Xaml_Controls_Primitives="using:Windows.UI.Xaml.Controls.Primitives"
+    xmlns:Bookstore2_81="using:Bookstore2_81">
+
+	<Thickness x:Key="TitlePanelMargin">9.6,13.6,0,22.4</Thickness>
+
+	<Style x:Key="BookTemplateTitleTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource ListViewItemTextBlockStyle}"/>
+	<Style x:Key="BookTemplateAuthorTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource ListViewItemSubheaderTextBlockStyle}"/>
+	<Style x:Key="PageTitleTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource HeaderTextBlockStyle}"/>
+
+	<Windows_UI_Xaml_Controls_Primitives:JumpListItemBackgroundConverter x:Key="JumpListItemBackgroundConverter" />
+	<Windows_UI_Xaml_Controls_Primitives:JumpListItemForegroundConverter x:Key="JumpListItemForegroundConverter" />
+
+	<DataTemplate x:Key="AuthorGroupHeaderTemplate">
+		<Border Margin="0,0,0,9.6" Background="{StaticResource PhoneAccentBrush}">
+			<TextBlock Text="{Binding Name}" Margin="9.6,0,0,4.8" Style="{StaticResource BookTemplateTitleTextBlockStyle}" VerticalAlignment="Bottom" FontFamily="Segoe WP" FontWeight="SemiBold"/>
+		</Border>
+	</DataTemplate>
+
+	<DataTemplate x:Key="ZoomedOutAuthorTemplate">
+		<Border Margin="9.6,0.8" Background="{Binding Converter={StaticResource JumpListItemBackgroundConverter}}">
+			<TextBlock Margin="9.6,0,9.6,4.8" Text="{Binding Group.Name}" Style="{StaticResource BookTemplateTitleTextBlockStyle}" Foreground="{Binding Converter={StaticResource JumpListItemForegroundConverter}}" VerticalAlignment="Bottom" FontFamily="Segoe WP" FontWeight="SemiBold"/>
+		</Border>
+	</DataTemplate>
+
+	<DataTemplate x:Key="BookTemplate">
+		<Grid Margin="0,0,0,8">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<Border Width="56" Height="56">
+				<Image Source="{Binding CoverImage}" Stretch="UniformToFill"/>
+			</Border>
+			<StackPanel Grid.Column="1">
+				<TextBlock Text="{Binding Title}" Style="{StaticResource BookTemplateTitleTextBlockStyle}" TextWrapping="NoWrap" Margin="9.6,0"/>
+				<TextBlock Text="{Binding Author.Name}" Style="{StaticResource BookTemplateAuthorTextBlockStyle}" TextWrapping="NoWrap" Margin="9.6,0"/>
+			</StackPanel>
+		</Grid>
+	</DataTemplate>
+
+</ResourceDictionary>
