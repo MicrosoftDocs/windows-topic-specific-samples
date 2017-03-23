@@ -1,0 +1,73 @@
+﻿<!--
+    Copyright (c) Microsoft Corporation. All rights reserved.
+    Use of this sample source code is subject to the terms of the Microsoft license 
+    agreement under which you licensed this sample source code and is provided AS-IS.
+    If you did not accept the terms of the license agreement, you are not authorized 
+    to use this sample source code.  For the terms of the license, please see the 
+    license agreement between you and Microsoft.
+  
+    To see all code Samples for Windows Store apps and Windows Phone Store apps, visit http://code.msdn.microsoft.com/windowsapps
+  
+-->
+
+<UserControl
+    x:Class="QuizGame.View.ClientView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:QuizGame.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="600"
+    d:DesignWidth="400">
+    
+    <UserControl.Resources>
+        <Style x:Key="OptionButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+        </Style>
+
+        <Style x:Key="CommandButtonStyle" TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="QUIZGAME" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="{Binding StateName}" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <StackPanel Visibility="{Binding JoinVisibility}" Margin="50,0">
+                <TextBox Text="{Binding PlayerName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="15" Header="Player name" FontSize="18"/>
+                <Button Content="Join game" Command="{Binding JoinGameCommand}" Style="{StaticResource CommandButtonStyle}"/>
+            </StackPanel>
+            <StackPanel>
+                <Grid Visibility="{Binding QuestionAvailableVisibility}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Content="{Binding CurrentQuestion.Options[0]}" Command="{Binding AnswerQuestionCommand}" CommandParameter="0" Style="{StaticResource OptionButtonStyle}" Background="#FFAA80FF"/>
+                    <Button Content="{Binding CurrentQuestion.Options[1]}" Command="{Binding AnswerQuestionCommand}" CommandParameter="1" Style="{StaticResource OptionButtonStyle}" Background="#FF8080FF" Grid.Row="1"/>
+                    <Button Content="{Binding CurrentQuestion.Options[2]}" Command="{Binding AnswerQuestionCommand}" CommandParameter="2" Style="{StaticResource OptionButtonStyle}" Background="#FF80AAFF" Grid.Row="2"/>
+                    <Button Content="{Binding CurrentQuestion.Options[3]}" Command="{Binding AnswerQuestionCommand}" CommandParameter="3" Style="{StaticResource OptionButtonStyle}" Background="#FF80D5FF" Grid.Row="3"/>
+                </Grid>
+                <Button Content="Leave game" Command="{Binding LeaveGameCommand}" Visibility="{Binding GameUnderwayVisibility}" Style="{StaticResource CommandButtonStyle}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+</UserControl>

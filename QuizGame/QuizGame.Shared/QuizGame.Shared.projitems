@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>d5e72390-7892-4857-8ed3-b2657ff5029d</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>QuizGame</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Common\BindableBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\DelegateCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ClientCommunicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\IGame.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\HostCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\IClientCommunicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\IHostCommunicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\MockClientCommunicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\MockHostCommunicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Question.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Game.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\HostCommunicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ClientViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\HostViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelLocator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\ClientView.xaml.cs">
+      <DependentUpon>ClientView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\HostView.xaml.cs">
+      <DependentUpon>HostView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TestView.xaml.cs">
+      <DependentUpon>TestView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)View\ClientView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)View\HostView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)View\TestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>
