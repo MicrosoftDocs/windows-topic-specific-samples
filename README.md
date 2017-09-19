@@ -1,0 +1,1 @@
+The sample goes with the topic [How to create an extension]()

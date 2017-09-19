@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathExtensionHost", "MathExtensionHost\MathExtensionHost.csproj", "{47932DBC-270F-472E-A87C-40076DA2699D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathExtension", "MathExtension\MathExtension.csproj", "{DF566003-4717-40DA-98F0-0EDE4CABA136}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47932DBC-270F-472E-A87C-40076DA2699D}.Debug|ARM.ActiveCfg = Debug|x86
+		{47932DBC-270F-472E-A87C-40076DA2699D}.Debug|ARM.Build.0 = Debug|x86
+		{47932DBC-270F-472E-A87C-40076DA2699D}.Debug|ARM.Deploy.0 = Debug|x86
+		{47932DBC-270F-472E-A87C-40076DA2699D}.Debug|x64.ActiveCfg = Debug|x64
+		{47932DBC-270F-472E-A87C-40076DA2699D}.Debug|x64.Build.0 = Debug|x64
+		{47932DBC-270F-472E-A87C-40076DA2699D}.Debug|x64.Deploy.0 = Debug|x64
+		{47932DBC-270F-472E-A87C-40076DA2699D}.Debug|x86.ActiveCfg = Debug|x86
+		{47932DBC-270F-472E-A87C-40076DA2699D}.Debug|x86.Build.0 = Debug|x86
+		{47932DBC-270F-472E-A87C-40076DA2699D}.Debug|x86.Deploy.0 = Debug|x86
+		{47932DBC-270F-472E-A87C-40076DA2699D}.Release|ARM.ActiveCfg = Release|ARM
+		{47932DBC-270F-472E-A87C-40076DA2699D}.Release|ARM.Build.0 = Release|ARM
+		{47932DBC-270F-472E-A87C-40076DA2699D}.Release|ARM.Deploy.0 = Release|ARM
+		{47932DBC-270F-472E-A87C-40076DA2699D}.Release|x64.ActiveCfg = Release|x64
+		{47932DBC-270F-472E-A87C-40076DA2699D}.Release|x64.Build.0 = Release|x64
+		{47932DBC-270F-472E-A87C-40076DA2699D}.Release|x64.Deploy.0 = Release|x64
+		{47932DBC-270F-472E-A87C-40076DA2699D}.Release|x86.ActiveCfg = Release|x86
+		{47932DBC-270F-472E-A87C-40076DA2699D}.Release|x86.Build.0 = Release|x86
+		{47932DBC-270F-472E-A87C-40076DA2699D}.Release|x86.Deploy.0 = Release|x86
+		{DF566003-4717-40DA-98F0-0EDE4CABA136}.Debug|ARM.ActiveCfg = Debug|x86
+		{DF566003-4717-40DA-98F0-0EDE4CABA136}.Debug|ARM.Build.0 = Debug|x86
+		{DF566003-4717-40DA-98F0-0EDE4CABA136}.Debug|ARM.Deploy.0 = Debug|x86
+		{DF566003-4717-40DA-98F0-0EDE4CABA136}.Debug|x64.ActiveCfg = Debug|x64
+		{DF566003-4717-40DA-98F0-0EDE4CABA136}.Debug|x64.Build.0 = Debug|x64
+		{DF566003-4717-40DA-98F0-0EDE4CABA136}.Debug|x64.Deploy.0 = Debug|x64
+		{DF566003-4717-40DA-98F0-0EDE4CABA136}.Debug|x86.ActiveCfg = Debug|x86
+		{DF566003-4717-40DA-98F0-0EDE4CABA136}.Debug|x86.Build.0 = Debug|x86
+		{DF566003-4717-40DA-98F0-0EDE4CABA136}.Debug|x86.Deploy.0 = Debug|x86
+		{DF566003-4717-40DA-98F0-0EDE4CABA136}.Release|ARM.ActiveCfg = Release|ARM
+		{DF566003-4717-40DA-98F0-0EDE4CABA136}.Release|ARM.Build.0 = Release|ARM
+		{DF566003-4717-40DA-98F0-0EDE4CABA136}.Release|ARM.Deploy.0 = Release|ARM
+		{DF566003-4717-40DA-98F0-0EDE4CABA136}.Release|x64.ActiveCfg = Release|x64
+		{DF566003-4717-40DA-98F0-0EDE4CABA136}.Release|x64.Build.0 = Release|x64
+		{DF566003-4717-40DA-98F0-0EDE4CABA136}.Release|x64.Deploy.0 = Release|x64
+		{DF566003-4717-40DA-98F0-0EDE4CABA136}.Release|x86.ActiveCfg = Release|x86
+		{DF566003-4717-40DA-98F0-0EDE4CABA136}.Release|x86.Build.0 = Release|x86
+		{DF566003-4717-40DA-98F0-0EDE4CABA136}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {51AA81E1-8C1A-4C1D-B4A3-86E50A04249C}
+	EndGlobalSection
+EndGlobal
