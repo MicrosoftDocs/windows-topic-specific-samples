@@ -1,6 +1,6 @@
----
+<!--
 category: CustomUserInteractions Inking
----
+-->
 
 # Ink toolbar location and orientation sample (dynamic)
 
