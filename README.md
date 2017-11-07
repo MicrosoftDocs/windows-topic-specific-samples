@@ -1,6 +1,6 @@
-﻿---
+﻿<!--
 category: CustomUserInteractions Inking
----
+-->
 
 # Ink recognition sample (basic)
 
