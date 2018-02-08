@@ -60,10 +60,10 @@ THE SOFTWARE.
             </Grid.RowDefinitions>
             <Button Name="buttonClear" 
                     Grid.Row="0"
+                    Content="Clear"
                     Foreground="White"
                     HorizontalAlignment="Stretch" 
                     VerticalAlignment="Stretch">
-                clear
             </Button>
             <ScrollViewer Name="eventLogScrollViewer" Grid.Row="1" 
                           VerticalScrollMode="Auto" 
