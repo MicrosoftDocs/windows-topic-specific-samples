@@ -98,7 +98,7 @@ namespace gazeinput
         /// </summary>
         /// <param name="sender">Source of the gaze entered event</param>
         /// <param name="e">Event args for the gaze entered event</param>
-        private void timerGaze_Tick(object sender, object e)
+        private void TimerGaze_Tick(object sender, object e)
         {
             // Increment progress bar.
             GazeRadialProgressBar.Value += 1;
@@ -202,10 +202,11 @@ namespace gazeinput
                     (int)Header.ActualHeight;
 
                 // Translate transform for moving gaze ellipse.
-                TranslateTransform translateEllipse = new TranslateTransform();
-
-                translateEllipse.X = ellipseLeft;
-                translateEllipse.Y = ellipseTop;
+                TranslateTransform translateEllipse = new TranslateTransform
+                {
+                    X = ellipseLeft,
+                    Y = ellipseTop
+                };
 
                 eyeGazePositionEllipse.RenderTransform = translateEllipse;
 
@@ -249,9 +250,8 @@ namespace gazeinput
               VisualTreeHelper.FindElementsInHostCoordinates(gazePoint, uiElement, true);
             foreach (UIElement item in elementStack)
             {
-                FrameworkElement feItem = item as FrameworkElement;
                 //Cast to FrameworkElement and get element name.
-                if (feItem != null)
+                if (item is FrameworkElement feItem)
                 {
                     if (feItem.Name.Equals(elementName))
                     {
@@ -291,8 +291,6 @@ namespace gazeinput
         /// <summary>
         /// Shut down gaze watcher and stop listening for events.
         /// </summary>
-        /// <param name="gazeDevice">Reference to eye-tracking device.</param>
-        /// <returns>True, if device is viable; otherwise, false.</returns>
         private void StopGazeDeviceWatcher()
         {
             if (gazeDeviceWatcher != null)
@@ -368,7 +366,7 @@ namespace gazeinput
             if (IsSupportedDevice(gazeDevice))
             {
                 timerGaze.Interval = new TimeSpan(0, 0, 0, 0, 20);
-                timerGaze.Tick += timerGaze_Tick;
+                timerGaze.Tick += TimerGaze_Tick;
 
                 SetGazeTargetLocation();
 
