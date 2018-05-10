@@ -1,0 +1,141 @@
+﻿<!--
+Copyright (c) Microsoft Corporation.  All rights reserved.
+    
+The MIT License (MIT)
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+    
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+    
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+
+<Page
+    x:Class="InputInjection.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:InputInjection"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0"
+                    Margin="10">
+            <TextBlock Style="{ThemeResource TitleTextBlockStyle}" 
+                       Name="titleText"
+                       Text="Touch input injection"
+                       HorizontalTextAlignment="Center" />
+            <TextBlock Style="{ThemeResource BodyTextBlockStyle}"
+                       Name="statusText"
+                       HorizontalTextAlignment="Center" />
+        </StackPanel>
+        <Grid HorizontalAlignment="Center"
+                        Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" 
+                       Grid.Row="0" 
+                       Style="{ThemeResource CaptionTextBlockStyle}"
+                       Text="User mouse input area"/>
+            <!-- Background must be set to something, otherwise pointer events are not detected. -->
+            <Grid Name="ContainerInput" 
+                  Grid.Column="0" 
+                  Grid.Row="1"
+                  HorizontalAlignment="Stretch" 
+                  Background="Transparent" 
+                  BorderBrush="Green" 
+                  BorderThickness="2" 
+                  MinHeight="100" MinWidth="300" 
+                  Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Name="B1" 
+                        Grid.Column="0" 
+                        HorizontalAlignment="Center" 
+                        Width="50" Height="50"
+                        Content="B1" />
+                <Button Name="B2" 
+                        Grid.Column="1" 
+                        HorizontalAlignment="Center" 
+                        Width="50" Height="50"
+                        Content="B2" />
+                <Button Name="B3" 
+                        Grid.Column="2" 
+                        HorizontalAlignment="Center" 
+                        Width="50" Height="50"
+                        Content="B3" />
+                <Button Name="B4" 
+                        Grid.Column="3" 
+                        HorizontalAlignment="Center" 
+                        Width="50" Height="50"
+                        Content="B4" />
+            </Grid>
+            <TextBlock Grid.Column="1" 
+                       Grid.Row="0"                         
+                       Style="{ThemeResource CaptionTextBlockStyle}"
+                       Text="Injected touch input area"/>
+            <Grid Name="ContainerInject"
+                  Grid.Column="1"  
+                  Grid.Row="1"
+                  HorizontalAlignment="Stretch"
+                  BorderBrush="Red" 
+                  BorderThickness="2" 
+                  MinHeight="100" MinWidth="300" 
+                  Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Name="B1i" Click="Button_Click_Injected"
+                        Content="B1i"
+                        Grid.Column="0" 
+                        HorizontalAlignment="Center" 
+                        Width="50" Height="50" />
+                <Button Name="B2i" Click="Button_Click_Injected"
+                        Content="B2i"
+                        Grid.Column="1" 
+                        HorizontalAlignment="Center" 
+                        Width="50" Height="50" />
+                <Button Name="B3i" Click="Button_Click_Injected"
+                        Content="B3i"
+                        Grid.Column="2" 
+                        HorizontalAlignment="Center" 
+                        Width="50" Height="50" />
+                <Button Name="B4i" Click="Button_Click_Injected"
+                        Content="B4i"
+                        Grid.Column="3" 
+                        HorizontalAlignment="Center" 
+                        Width="50" Height="50" />
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
