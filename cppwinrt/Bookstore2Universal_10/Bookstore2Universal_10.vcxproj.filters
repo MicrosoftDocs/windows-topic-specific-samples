@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MainPage.xaml" />
+    <Page Include="SeZoUC.xaml" />
+    <Page Include="BookstoreStyles.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="App.idl" />
+    <Midl Include="MainPage.idl" />
+    <Midl Include="BookstoreViewModel.idl">
+      <Filter>ViewModel</Filter>
+    </Midl>
+    <Midl Include="BookSku.idl" />
+    <Midl Include="Author.idl" />
+    <Midl Include="SeZoUC.idl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="App.cpp" />
+    <ClCompile Include="MainPage.cpp" />
+    <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="BookstoreViewModel.cpp" />
+    <ClCompile Include="BookSku.cpp" />
+    <ClCompile Include="Author.cpp" />
+    <ClCompile Include="SeZoUC.cpp" />
+    <ClCompile Include="DataSource.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="App.h" />
+    <ClInclude Include="MainPage.h" />
+    <ClInclude Include="BookstoreViewModel.h" />
+    <ClInclude Include="BookSku.h" />
+    <ClInclude Include="Author.h" />
+    <ClInclude Include="SeZoUC.h" />
+    <ClInclude Include="DataSource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Wide310x150Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\StoreLogo.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square150x150Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\SplashScreen.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\LockScreenLogo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\CoverImages\five.png" />
+    <Image Include="Assets\CoverImages\four.png" />
+    <Image Include="Assets\CoverImages\one.png" />
+    <Image Include="Assets\CoverImages\seven.png" />
+    <Image Include="Assets\CoverImages\six.png" />
+    <Image Include="Assets\CoverImages\three.png" />
+    <Image Include="Assets\CoverImages\two.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Bookstore2Universal_10_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{e48dc53e-40b1-40cb-970a-f89935452892}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ViewModel">
+      <UniqueIdentifier>{fe9551eb-ad9b-400c-b362-fddb53cfe140}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
