@@ -20,7 +20,7 @@ namespace winrt::Bookstore2Universal_10::implementation
 {
     struct Author : AuthorT<Author, IVectorView<IInspectable>>, winrt::observable_vector_base<Author, IInspectable>
     {
-        Author() = delete;
+        Author() = default;
         Author(std::wstring const& name);
 
         winrt::hstring Name();
@@ -38,11 +38,18 @@ namespace winrt::Bookstore2Universal_10::implementation
         }
 
         void AddBookSku(Bookstore2Universal_10::BookSku const& bookSku);
-        static Bookstore2Universal_10::Author GetAuthorByName(std::wstring name);
+        static Bookstore2Universal_10::Author GetAuthorByName(std::wstring const& name);
 
     private:
         std::wstring m_name;
         std::vector<IInspectable> m_values;
-        static std::map<std::wstring, Author const*> s_authorDictionary;
+        static std::map<std::wstring, Bookstore2Universal_10::Author> s_authorDictionary;
+    };
+}
+
+namespace winrt::Bookstore2Universal_10::factory_implementation
+{
+    struct Author : AuthorT<Author, implementation::Author>
+    {
     };
 }

@@ -12,11 +12,11 @@
 
 namespace winrt::Bookstore2Universal_10::implementation
 {
-    std::map<std::wstring, Author const*> Author::s_authorDictionary;
+    std::map<std::wstring, Bookstore2Universal_10::Author> Author::s_authorDictionary;
 
     Author::Author(std::wstring const& name) : m_name{ name }
     {
-        Author::s_authorDictionary[m_name] = this;
+        Author::s_authorDictionary.emplace(std::make_pair(m_name, static_cast<Bookstore2Universal_10::Author>(*this)));
     }
 
     winrt::hstring Author::Name()
@@ -34,8 +34,15 @@ namespace winrt::Bookstore2Universal_10::implementation
         get_container().push_back(bookSku);
     }
 
-    Bookstore2Universal_10::Author Author::GetAuthorByName(std::wstring name)
+    Bookstore2Universal_10::Author Author::GetAuthorByName(std::wstring const& name)
     {
-        return static_cast<Bookstore2Universal_10::Author>(*Author::s_authorDictionary[name]);
+        if (Author::s_authorDictionary.find(name) != Author::s_authorDictionary.end())
+        {
+            return Author::s_authorDictionary[name];
+        }
+        else
+        {
+            return nullptr;
+        }
     }
 }
