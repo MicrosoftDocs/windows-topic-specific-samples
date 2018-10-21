@@ -16,7 +16,6 @@ namespace Bookstore2Universal_10
     [Windows.UI.Xaml.Data.Bindable]
     runtimeclass Author : Windows.Foundation.Collections.IObservableVector<IInspectable>
     {
-        Author();
         void AddBookSku(Bookstore2Universal_10.BookSku bookSku);
         Windows.Foundation.Collections.IObservableVector<IInspectable> BookSkus{ get; };
         String Name{ get; };

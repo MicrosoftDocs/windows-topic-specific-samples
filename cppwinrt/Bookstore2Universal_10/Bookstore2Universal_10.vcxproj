@@ -88,10 +88,32 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Author.h" />
-    <ClInclude Include="BookSku.h" />
-    <ClInclude Include="BookstoreViewModel.h" />
+    <Midl Include="Author.idl" />
+    <ClInclude Include="Author.h">
+      <DependentUpon>Author.idl</DependentUpon>
+    </ClInclude>
+    <ClCompile Include="Author.cpp">
+      <DependentUpon>Author.idl</DependentUpon>
+    </ClCompile>
+
+    <Midl Include="BookSku.idl" />
+    <ClInclude Include="BookSku.h">
+      <DependentUpon>BookSku.idl</DependentUpon>
+    </ClInclude>
+    <ClCompile Include="BookSku.cpp">
+      <DependentUpon>BookSku.idl</DependentUpon>
+    </ClCompile>
+
+    <Midl Include="BookstoreViewModel.idl" />
+    <ClInclude Include="BookstoreViewModel.h">
+      <DependentUpon>BookstoreViewModel.idl</DependentUpon>
+    </ClInclude>
+    <ClCompile Include="BookstoreViewModel.cpp">
+      <DependentUpon>BookstoreViewModel.idl</DependentUpon>
+    </ClCompile>
+
     <ClInclude Include="DataSource.h" />
+    <ClCompile Include="DataSource.cpp" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="App.h">
       <DependentUpon>App.xaml</DependentUpon>
@@ -140,10 +162,6 @@
     <Image Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Author.cpp" />
-    <ClCompile Include="BookSku.cpp" />
-    <ClCompile Include="BookstoreViewModel.cpp" />
-    <ClCompile Include="DataSource.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
@@ -163,9 +181,6 @@
     <Midl Include="App.idl">
       <DependentUpon>App.xaml</DependentUpon>
     </Midl>
-    <Midl Include="Author.idl" />
-    <Midl Include="BookSku.idl" />
-    <Midl Include="BookstoreViewModel.idl" />
     <Midl Include="MainPage.idl">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Midl>

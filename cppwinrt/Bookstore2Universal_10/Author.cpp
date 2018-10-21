@@ -12,11 +12,13 @@
 
 namespace winrt::Bookstore2Universal_10::implementation
 {
-    std::map<std::wstring, Bookstore2Universal_10::Author> Author::s_authorDictionary;
+    std::map<std::wstring, Author const*> Author::s_authorDictionary;
+    std::mutex Author::s_authorDictionary_mutex;
 
     Author::Author(std::wstring const& name) : m_name{ name }
     {
-        Author::s_authorDictionary.emplace(std::make_pair(m_name, static_cast<Bookstore2Universal_10::Author>(*this)));
+        std::scoped_lock<std::mutex> scoped_lock{ Author::s_authorDictionary_mutex };
+        Author::s_authorDictionary[m_name] = this;
     }
 
     winrt::hstring Author::Name()
@@ -34,15 +36,9 @@ namespace winrt::Bookstore2Universal_10::implementation
         get_container().push_back(bookSku);
     }
 
-    Bookstore2Universal_10::Author Author::GetAuthorByName(std::wstring const& name)
+    Bookstore2Universal_10::Author Author::GetAuthorByName(std::wstring name)
     {
-        if (Author::s_authorDictionary.find(name) != Author::s_authorDictionary.end())
-        {
-            return Author::s_authorDictionary[name];
-        }
-        else
-        {
-            return nullptr;
-        }
+        std::scoped_lock<std::mutex> scoped_lock{ Author::s_authorDictionary_mutex };
+        return static_cast<Bookstore2Universal_10::Author>(*Author::s_authorDictionary.at(name));
     }
 }

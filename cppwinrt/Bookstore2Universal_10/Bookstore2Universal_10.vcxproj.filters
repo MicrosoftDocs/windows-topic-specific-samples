@@ -14,30 +14,42 @@
     <Midl Include="BookstoreViewModel.idl">
       <Filter>ViewModel</Filter>
     </Midl>
-    <Midl Include="BookSku.idl" />
-    <Midl Include="Author.idl" />
     <Midl Include="SeZoUC.idl" />
+    <Midl Include="Author.idl">
+      <Filter>ViewModel</Filter>
+    </Midl>
+    <Midl Include="BookSku.idl">
+      <Filter>ViewModel</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="App.cpp" />
     <ClCompile Include="MainPage.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
-    <ClCompile Include="BookstoreViewModel.cpp" />
     <ClCompile Include="BookSku.cpp" />
     <ClCompile Include="Author.cpp" />
     <ClCompile Include="SeZoUC.cpp" />
-    <ClCompile Include="DataSource.cpp" />
+    <ClCompile Include="BookstoreViewModel.cpp">
+      <Filter>ViewModel</Filter>
+    </ClCompile>
+    <ClCompile Include="DataSource.cpp">
+      <Filter>ViewModel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="App.h" />
     <ClInclude Include="MainPage.h" />
-    <ClInclude Include="BookstoreViewModel.h" />
     <ClInclude Include="BookSku.h" />
     <ClInclude Include="Author.h" />
     <ClInclude Include="SeZoUC.h" />
-    <ClInclude Include="DataSource.h" />
+    <ClInclude Include="BookstoreViewModel.h">
+      <Filter>ViewModel</Filter>
+    </ClInclude>
+    <ClInclude Include="DataSource.h">
+      <Filter>ViewModel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
@@ -61,13 +73,27 @@
     <Image Include="Assets\LockScreenLogo.scale-200.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="Assets\CoverImages\five.png" />
-    <Image Include="Assets\CoverImages\four.png" />
-    <Image Include="Assets\CoverImages\one.png" />
-    <Image Include="Assets\CoverImages\seven.png" />
-    <Image Include="Assets\CoverImages\six.png" />
-    <Image Include="Assets\CoverImages\three.png" />
-    <Image Include="Assets\CoverImages\two.png" />
+    <Image Include="Assets\CoverImages\five.png">
+      <Filter>Assets\CoverImages</Filter>
+    </Image>
+    <Image Include="Assets\CoverImages\four.png">
+      <Filter>Assets\CoverImages</Filter>
+    </Image>
+    <Image Include="Assets\CoverImages\seven.png">
+      <Filter>Assets\CoverImages</Filter>
+    </Image>
+    <Image Include="Assets\CoverImages\six.png">
+      <Filter>Assets\CoverImages</Filter>
+    </Image>
+    <Image Include="Assets\CoverImages\three.png">
+      <Filter>Assets\CoverImages</Filter>
+    </Image>
+    <Image Include="Assets\CoverImages\two.png">
+      <Filter>Assets\CoverImages</Filter>
+    </Image>
+    <Image Include="Assets\CoverImages\one.png">
+      <Filter>Assets\CoverImages</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
@@ -82,6 +108,9 @@
     </Filter>
     <Filter Include="ViewModel">
       <UniqueIdentifier>{fe9551eb-ad9b-400c-b362-fddb53cfe140}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\CoverImages">
+      <UniqueIdentifier>{53833198-a950-4dee-9ad3-32e4976e8074}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
