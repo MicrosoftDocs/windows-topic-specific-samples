@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadialControllerApp1", "RadialControllerCustomization\RadialControllerApp1.csproj", "{F91B7BE7-CF9A-462A-9AAA-E7371925DC64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F91B7BE7-CF9A-462A-9AAA-E7371925DC64}.Debug|x64.ActiveCfg = Debug|x64
+		{F91B7BE7-CF9A-462A-9AAA-E7371925DC64}.Debug|x64.Build.0 = Debug|x64
+		{F91B7BE7-CF9A-462A-9AAA-E7371925DC64}.Debug|x64.Deploy.0 = Debug|x64
+		{F91B7BE7-CF9A-462A-9AAA-E7371925DC64}.Debug|x86.ActiveCfg = Debug|x86
+		{F91B7BE7-CF9A-462A-9AAA-E7371925DC64}.Debug|x86.Build.0 = Debug|x86
+		{F91B7BE7-CF9A-462A-9AAA-E7371925DC64}.Debug|x86.Deploy.0 = Debug|x86
+		{F91B7BE7-CF9A-462A-9AAA-E7371925DC64}.Release|x64.ActiveCfg = Release|x64
+		{F91B7BE7-CF9A-462A-9AAA-E7371925DC64}.Release|x64.Build.0 = Release|x64
+		{F91B7BE7-CF9A-462A-9AAA-E7371925DC64}.Release|x64.Deploy.0 = Release|x64
+		{F91B7BE7-CF9A-462A-9AAA-E7371925DC64}.Release|x86.ActiveCfg = Release|x86
+		{F91B7BE7-CF9A-462A-9AAA-E7371925DC64}.Release|x86.Build.0 = Release|x86
+		{F91B7BE7-CF9A-462A-9AAA-E7371925DC64}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E5F5BB21-9427-41D5-9ABC-6C1B2F6D75CA}
+	EndGlobalSection
+EndGlobal
