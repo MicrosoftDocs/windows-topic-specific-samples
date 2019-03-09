@@ -1,0 +1,118 @@
+﻿<!--
+// *********************************************************
+//
+// Copyright (c) Microsoft. All rights reserved.
+// This code is licensed under the MIT License (MIT).
+// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+//
+//*********************************************************
+-->
+
+<Page
+    x:Class="UICommand1.View.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:UICommand1.ViewModel"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <vm:OpacityConverter x:Key="opaque" />
+    </Page.Resources>
+
+    <Grid Name="ItemGrid"
+          Background="AliceBlue"
+          PointerWheelChanged="Page_PointerWheelChanged">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ListView Grid.Column="0" VerticalAlignment="Center"
+                  x:Name="CommandListView" 
+                  ItemsSource="{x:Bind Path=ViewModel.ListItemLeft}" 
+                  SelectionMode="None" IsItemClickEnabled="False" 
+                  HorizontalAlignment="Right">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="vm:ListItemData">
+                    <Grid VerticalAlignment="Center">
+                        <AppBarButton Label="{x:Bind ListItemText}">
+                            <AppBarButton.Icon>
+                                <SymbolIcon Symbol="{x:Bind ListItemIcon}"/>
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid Grid.Column="1" Margin="0,0,0,0"
+              HorizontalAlignment="Center" 
+              VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="1">
+                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" 
+                          FontSize="40" Glyph="&#xE893;" 
+                          Opacity="{x:Bind Path=ViewModel.ListItemLeft.Count, 
+                                        Mode=OneWay, Converter={StaticResource opaque}}"/>
+                <Button Name="MoveItemRightButton"
+                        Margin="0,10,0,10" Width="120" HorizontalAlignment="Center"
+                        Command="{x:Bind Path=ViewModel.MoveRightCommand}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator 
+                            Modifiers="Control" 
+                            Key="Add" />
+                    </Button.KeyboardAccelerators>
+                    <StackPanel>
+                        <SymbolIcon Symbol="Next"/>
+                        <TextBlock>Move item right</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Name="MoveItemLeftButton" 
+                            Margin="0,10,0,10" Width="120" HorizontalAlignment="Center"
+                            Command="{x:Bind Path=ViewModel.MoveLeftCommand}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator 
+                            Modifiers="Control" 
+                            Key="Subtract" />
+                    </Button.KeyboardAccelerators>
+                    <StackPanel>
+                        <SymbolIcon Symbol="Previous"/>
+                        <TextBlock>Move item left</TextBlock>
+                    </StackPanel>
+                </Button>
+                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" 
+                          FontSize="40" Glyph="&#xE892;"
+                          Opacity="{x:Bind Path=ViewModel.ListItemRight.Count, 
+                                        Mode=OneWay, Converter={StaticResource opaque}}"/>
+            </StackPanel>
+        </Grid>
+        <ListView Grid.Column="2" 
+                  x:Name="CommandListViewRight" 
+                  VerticalAlignment="Center" 
+                  IsItemClickEnabled="False" 
+                  SelectionMode="None"
+                  ItemsSource="{x:Bind Path=ViewModel.ListItemRight}" 
+                  HorizontalAlignment="Left">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="vm:ListItemData">
+                    <Grid VerticalAlignment="Center">
+                        <AppBarButton Label="{x:Bind ListItemText}">
+                            <AppBarButton.Icon>
+                                <SymbolIcon Symbol="{x:Bind ListItemIcon}"/>
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
