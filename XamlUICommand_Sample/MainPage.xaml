@@ -1,0 +1,129 @@
+﻿<Page
+    x:Class="XamlUICommand_Sample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:XamlUICommand_Sample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxcontrols="using:Microsoft.UI.Xaml.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <XamlUICommand x:Name="CustomXamlUICommand" ExecuteRequested="DeleteCommand_ExecuteRequested" Description="Custom XamlUICommand" Label="Custom XamlUICommand">
+            <XamlUICommand.IconSource>
+                <FontIconSource FontFamily="Wingdings" Glyph="&#x4D;"/>
+            </XamlUICommand.IconSource>
+            <XamlUICommand.KeyboardAccelerators>
+                <KeyboardAccelerator Key="D" Modifiers="Control"/>
+            </XamlUICommand.KeyboardAccelerators>
+        </XamlUICommand>
+
+        <Style x:Key="HorizontalSwipe" 
+               TargetType="ListViewItem" 
+               BasedOn="{StaticResource ListViewItemRevealStyle}">
+            <Setter Property="Height" Value="70"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        
+    </Page.Resources>
+
+    <Grid Loaded="ControlExample_Loaded" Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" 
+                    Padding="10" 
+                    BorderThickness="0,0,0,1" 
+                    BorderBrush="LightBlue"
+                    Background="AliceBlue">
+            <TextBlock Style="{StaticResource HeaderTextBlockStyle}">
+                XamlUICommand sample
+            </TextBlock>
+            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,0,0,10">
+                This sample shows how to use the XamlUICommand class to 
+                share a custom command with consistent user experiences 
+                across various controls.
+            </TextBlock>
+            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,0,0,0">
+                Specifically, we define a custom delete command and add it 
+                to a variety of command surfaces, all of which share a common 
+                icon, label, keyboard accelerator, and description.
+            </TextBlock>
+        </StackPanel>
+
+        <muxcontrols:MenuBar Grid.Row="1">
+            <muxcontrols:MenuBarItem Title="File">
+            </muxcontrols:MenuBarItem>
+            <muxcontrols:MenuBarItem Title="Edit">
+                <MenuFlyoutItem x:Name="DeleteFlyoutItem" Command="{StaticResource CustomXamlUICommand}"/>
+            </muxcontrols:MenuBarItem>
+            <muxcontrols:MenuBarItem Title="Help">
+            </muxcontrols:MenuBarItem>
+        </muxcontrols:MenuBar>
+
+        <ListView x:Name="ListViewRight" Grid.Row="2" 
+                  Loaded="ListView_Loaded" 
+                  IsItemClickEnabled="True"
+                  SelectionMode="Single" 
+                  SelectionChanged="ListView_SelectionChanged" 
+                  ItemContainerStyle="{StaticResource HorizontalSwipe}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:ListItemData">
+                    <UserControl PointerEntered="ListViewSwipeContainer_PointerEntered"
+                                 PointerExited="ListViewSwipeContainer_PointerExited">
+                        <UserControl.ContextFlyout>
+                            <MenuFlyout>
+                                <MenuFlyoutItem 
+                                    Command="{x:Bind Command}" 
+                                    CommandParameter="{x:Bind Text}" />
+                            </MenuFlyout>
+                        </UserControl.ContextFlyout>
+                        <Grid AutomationProperties.Name="{x:Bind Text}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="HoveringStates">
+                                    <VisualState x:Name="HoverButtonsHidden" />
+                                    <VisualState x:Name="HoverButtonsShown">
+                                        <VisualState.Setters>
+                                            <Setter Target="HoverButton.Visibility" 
+                                                    Value="Visible" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <SwipeControl x:Name="ListViewSwipeContainer">
+                                <SwipeControl.RightItems>
+                                    <SwipeItems Mode="Execute">
+                                        <SwipeItem x:Name="DeleteSwipeItem"
+                                                   Background="Red" 
+                                                   Command="{x:Bind Command}" 
+                                                   CommandParameter="{x:Bind Text}"/>
+                                    </SwipeItems>
+                                </SwipeControl.RightItems>
+                                <Grid VerticalAlignment="Center">
+                                    <TextBlock Text="{x:Bind Text}" 
+                                               Margin="10" 
+                                               FontSize="18" 
+                                               HorizontalAlignment="Left"       
+                                               VerticalAlignment="Center"/>
+                                    <AppBarButton x:Name="HoverButton" 
+                                                  IsTabStop="False" 
+                                                  HorizontalAlignment="Right" 
+                                                  Visibility="Collapsed" 
+                                                  Command="{x:Bind Command}" 
+                                                  CommandParameter="{x:Bind Text}"/>
+                                </Grid>
+                            </SwipeControl>
+                        </Grid>
+                    </UserControl>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
