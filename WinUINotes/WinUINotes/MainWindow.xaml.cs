@@ -32,5 +32,13 @@ namespace WinUINotes
             // Replace system title bar with the WinUI TitleBar.
             SetTitleBar(AppTitleBar);
         }
+
+        private void AppTitleBar_BackRequested(TitleBar sender, object args)
+        {
+            if (rootFrame.CanGoBack == true)
+            {
+                rootFrame.GoBack();
+            }
+        }
     }
 }

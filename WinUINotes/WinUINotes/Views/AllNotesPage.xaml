@@ -51,7 +51,10 @@
 
         <ItemsView ItemsSource="{x:Bind notesModel.Notes}" 
                    Grid.Row="1" Margin="24"
-                   ItemTemplate="{StaticResource NoteItemTemplate}">
+                   ItemTemplate="{StaticResource NoteItemTemplate}"
+                   SelectionMode="None"
+                   IsItemInvokedEnabled="True"
+                   ItemInvoked="ItemsView_ItemInvoked">
             <ItemsView.Layout>
                 <UniformGridLayout MinItemWidth="200"
                            MinColumnSpacing="20"

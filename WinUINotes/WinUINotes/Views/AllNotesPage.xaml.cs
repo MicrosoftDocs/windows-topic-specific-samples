@@ -35,5 +35,10 @@ namespace WinUINotes.Views
         {
             Frame.Navigate(typeof(NotePage));
         }
+
+        private void ItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEventArgs args)
+        {
+            Frame.Navigate(typeof(NotePage), args.InvokedItem);
+        }
     }
 }

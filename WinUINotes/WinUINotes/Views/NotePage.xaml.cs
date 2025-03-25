@@ -47,13 +47,25 @@ namespace WinUINotes.Views
             {
                 await noteModel.DeleteAsync();
             }
+
+            if (Frame.CanGoBack == true)
+            {
+                Frame.GoBack();
+            }
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
-            noteModel = new Note();
+            if (e.Parameter is Note note)
+            {
+                noteModel = note;
+            }
+            else
+            {
+                noteModel = new Note();
+            }
         }
     }
 }
