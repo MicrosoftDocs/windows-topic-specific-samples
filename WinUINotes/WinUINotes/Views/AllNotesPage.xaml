@@ -41,7 +41,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <CommandBar DefaultLabelPosition="Right">
-            <AppBarButton Icon="Add" Label="New note"/>
+            <AppBarButton Icon="Add" Label="New note"
+                          Click="NewNoteButton_Click"/>
             <CommandBar.Content>
                 <TextBlock Text="Quick notes" Margin="12,8" 
                    Style="{ThemeResource SubtitleTextBlockStyle}"/>

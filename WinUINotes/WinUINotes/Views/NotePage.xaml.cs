@@ -48,5 +48,12 @@ namespace WinUINotes.Views
                 await noteModel.DeleteAsync();
             }
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            noteModel = new Note();
+        }
     }
 }

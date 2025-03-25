@@ -30,5 +30,10 @@ namespace WinUINotes.Views
         {
             this.InitializeComponent();
         }
+
+        private void NewNoteButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(NotePage));
+        }
     }
 }
