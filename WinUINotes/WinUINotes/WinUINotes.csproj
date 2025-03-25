@@ -14,6 +14,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="NotePage.xaml" />
+    <None Remove="Views\AllNotesPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,7 +49,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\" />
+    <Page Update="Views\AllNotesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <!--
