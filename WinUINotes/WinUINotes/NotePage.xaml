@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="WinUINotes.NotePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUINotes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Padding="16" RowSpacing="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox x:Name="NoteEditor"
+             AcceptsReturn="True"
+             TextWrapping="Wrap"
+             PlaceholderText="Enter your note"
+             Header="New note"
+             ScrollViewer.VerticalScrollBarVisibility="Auto"
+             Width="400"
+             Grid.Column="1"/>
+
+        <StackPanel Orientation="Horizontal"
+                HorizontalAlignment="Right"
+                Spacing="4"
+                Grid.Row="1" Grid.Column="1">
+            <Button Content="Save" Click="SaveButton_Click"/>
+            <Button Content="Delete" Click="DeleteButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>
