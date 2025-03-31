@@ -43,21 +43,21 @@
             <AppBarButton Icon="Add" Label="New note"
                           Click="NewNoteButton_Click"/>
             <CommandBar.Content>
-                <TextBlock Text="Quick notes" Margin="12,8" 
+                <TextBlock Text="Quick notes" Margin="16,8" 
                    Style="{ThemeResource SubtitleTextBlockStyle}"/>
             </CommandBar.Content>
         </CommandBar>
 
         <ItemsView ItemsSource="{x:Bind notesModel.Notes}" 
-                   Grid.Row="1" Margin="24"
+                   Grid.Row="1" Margin="16"
                    ItemTemplate="{StaticResource NoteItemTemplate}"
                    SelectionMode="None"
                    IsItemInvokedEnabled="True"
                    ItemInvoked="ItemsView_ItemInvoked">
             <ItemsView.Layout>
                 <UniformGridLayout MinItemWidth="200"
-                           MinColumnSpacing="20"
-                           MinRowSpacing="20"
+                           MinColumnSpacing="12"
+                           MinRowSpacing="12"
                            ItemsJustification="Start"/>
             </ItemsView.Layout>
         </ItemsView>
