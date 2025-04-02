@@ -6,8 +6,7 @@
     xmlns:local="using:WinUINotes"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
     <Grid Padding="16" RowSpacing="8">
         <Grid.RowDefinitions>
@@ -34,7 +33,7 @@
                 HorizontalAlignment="Right"
                 Spacing="4"
                 Grid.Row="1" Grid.Column="1">
-            <Button Content="Save" Click="SaveButton_Click"/>
+            <Button Content="Save" Click="SaveButton_Click" Style="{StaticResource AccentButtonStyle}"/>
             <Button Content="Delete" Click="DeleteButton_Click"/>
         </StackPanel>
     </Grid>
