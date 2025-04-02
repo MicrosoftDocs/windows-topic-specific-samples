@@ -5,13 +5,10 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-using Microsoft.Windows.AppNotifications;
-using Microsoft.Windows.AppNotifications.Builder;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
@@ -41,10 +38,6 @@ namespace WinUINotes.Views
             if (noteModel is not null)
             {
                 await noteModel.SaveAsync();
-
-                var builder = new AppNotificationBuilder().AddText("Note was saved!");
-                var notificationManager = AppNotificationManager.Default;
-                notificationManager.Show(builder.BuildNotification());
             }
         }
 
