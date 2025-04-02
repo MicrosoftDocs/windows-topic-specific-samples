@@ -20,11 +20,11 @@
                         <RowDefinition Height="120"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="{x:Bind Text}" Margin="4"
+                    <TextBlock Text="{x:Bind Text}" Margin="12,8"
                                TextWrapping="Wrap"
                                TextTrimming="WordEllipsis"/>
-                    <Border Grid.Row="1" Padding="4,6,0,6"
-                            Background="{ThemeResource ControlAltFillColorSecondaryBrush}">
+                    <Border Grid.Row="1" Padding="8,6,0,6"
+                            Background="{ThemeResource SubtleFillColorSecondaryBrush}">
                         <TextBlock Text="{x:Bind Date}"
                             Style="{StaticResource CaptionTextBlockStyle}"
                             Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
