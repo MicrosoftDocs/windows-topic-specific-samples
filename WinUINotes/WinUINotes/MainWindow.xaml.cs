@@ -18,9 +18,9 @@ namespace WinUINotes
             // Create a new window presenter
             OverlappedPresenter presenter = OverlappedPresenter.Create();
             // Set the minimum width the window can be resized to
-            presenter.PreferredMinimumWidth = 320;
+            presenter.PreferredMinimumWidth = 440;
             // Set the minimum height the window can be resized to
-            presenter.PreferredMinimumHeight = 240;
+            presenter.PreferredMinimumHeight = 280;
             // Apply the presenter settings to the current AppWindow
             AppWindow.SetPresenter(presenter);
         }
