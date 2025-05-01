@@ -1,8 +1,8 @@
-﻿This repo contains special-case, one-off samples that have been created just for specific topics in the windows-uwp or winrt-api repos. 
+﻿This repo contains complete samples and snippet hosts created for specific topics in the Windows developer doc repos. 
 
-The purpose of this repo is solely to provide convenient zip-file downloads for the topics to link to. 
-To enable this, each sample is in its own "orphaned" branch - that is, a branch with no relationship to other branches in the repo. 
-This works because GitHub generates independent zip files for each branch. 
+The purpose of this repo is to provide a place for Windows dev doc writers to host topic-specific samples, snippet hosts, and .zip downloads.
 
-Most Windows samples have more general appeal, so they are published under the Microsoft org on GitHub - for example, in [windows-universal-samples](http://github.com/Microsoft/Windows-universal-samples). 
+To enable .zip downloads, each sample must be in its own "orphaned" branch - that is, a branch with no relationship to other branches in the repo (GitHub generates independent zip files for each branch). 
+
+Note: Windows samples are published under the Microsoft org on GitHub - for example, in [windows-universal-samples](http://github.com/Microsoft/Windows-universal-samples). 
 
