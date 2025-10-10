@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Threading.Tasks;
-using Windows.Storage;
+using WinUINotes.Services;
 
 namespace WinUINotes.Models
 {
     public class Note
     {
-        private StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+        private IFileService fileService;
         public string Filename { get; set; } = string.Empty;
         public string Text { get; set; } = string.Empty;
         public DateTime Date { get; set; } = DateTime.Now;
@@ -14,27 +15,22 @@ namespace WinUINotes.Models
         public Note()
         {
             Filename = "notes" + DateTime.Now.ToBinary().ToString() + ".txt";
+            fileService = App.Current.Services.GetService<IFileService>();
         }
 
         public async Task SaveAsync()
         {
-            // Save the note to a file.
-            StorageFile noteFile = (StorageFile)await storageFolder.TryGetItemAsync(Filename);
-            if (noteFile is null)
-            {
-                noteFile = await storageFolder.CreateFileAsync(Filename, CreationCollisionOption.ReplaceExisting);
-            }
-            await FileIO.WriteTextAsync(noteFile, Text);
+            await fileService.CreateOrUpdateFileAsync(Filename, Text);
         }
 
         public async Task DeleteAsync()
         {
-            // Delete the note from the file system.
-            StorageFile noteFile = (StorageFile)await storageFolder.TryGetItemAsync(Filename);
-            if (noteFile is not null)
-            {
-                await noteFile.DeleteAsync();
-            }
+            await fileService.DeleteFileAsync(Filename);
+        }
+
+        public bool NoteFileExists()
+        {
+            return fileService.FileExists(Filename);
         }
     }
 }
