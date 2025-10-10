@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using WinUINotes.Models;
+using WinUINotes.Services;
 
 namespace WinUINotes.ViewModels
 {
@@ -13,9 +14,9 @@ namespace WinUINotes.ViewModels
         [ObservableProperty]
         private ObservableCollection<Note> notes;
 
-        public AllNotesViewModel()
+        public AllNotesViewModel(IFileService fileService)
         {
-            allNotes = new AllNotes();
+            allNotes = new AllNotes(fileService);
             notes = new ObservableCollection<Note>();
         }
 

@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using WinUINotes.Services;
 
@@ -12,10 +11,10 @@ namespace WinUINotes.Models
         public string Text { get; set; } = string.Empty;
         public DateTime Date { get; set; } = DateTime.Now;
 
-        public Note()
+        public Note(IFileService fileService)
         {
             Filename = "notes" + DateTime.Now.ToBinary().ToString() + ".txt";
-            fileService = App.Current.Services.GetService<IFileService>();
+            this.fileService = fileService;
         }
 
         public async Task SaveAsync()

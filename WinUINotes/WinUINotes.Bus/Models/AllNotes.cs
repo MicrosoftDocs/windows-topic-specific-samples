@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Windows.Storage;
@@ -12,9 +11,9 @@ namespace WinUINotes.Models
         private IFileService fileService;
         public ObservableCollection<Note> Notes { get; set; } = [];
 
-        public AllNotes()
+        public AllNotes(IFileService fileService)
         {
-            fileService = App.Current.Services.GetService<IFileService>();
+            this.fileService = fileService;
         }
 
         public async Task LoadNotes()
@@ -38,7 +37,7 @@ namespace WinUINotes.Models
                 else if (item.IsOfType(StorageItemTypes.File))
                 {
                     IStorageFile file = (IStorageFile)item;
-                    Note note = new()
+                    Note note = new(fileService)
                     {
                         Filename = file.Name,
                         Text = await fileService.GetTextFromFileAsync(file),

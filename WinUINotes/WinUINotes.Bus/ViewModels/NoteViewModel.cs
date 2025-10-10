@@ -4,12 +4,14 @@ using CommunityToolkit.Mvvm.Messaging;
 using System;
 using System.Threading.Tasks;
 using WinUINotes.Models;
+using WinUINotes.Services;
 
 namespace WinUINotes.ViewModels
 {
     public partial class NoteViewModel : ObservableObject
     {
         private Note note;
+        private IFileService fileService;
 
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(SaveCommand))]
@@ -23,9 +25,10 @@ namespace WinUINotes.ViewModels
         [ObservableProperty]
         private DateTime date = DateTime.Now;
 
-        public NoteViewModel()
+        public NoteViewModel(IFileService fileService)
         {
-            this.note = new Note();
+            this.fileService = fileService;
+            this.note = new Note(fileService);
             this.Filename = note.Filename;
         }
 
@@ -61,7 +64,7 @@ namespace WinUINotes.ViewModels
         private async Task Delete()
         {
             await note.DeleteAsync();
-            note = new Note();
+            note = new Note(fileService);
             // Send a message from some other module
             WeakReferenceMessenger.Default.Send(new NoteDeletedMessage(note));
         }

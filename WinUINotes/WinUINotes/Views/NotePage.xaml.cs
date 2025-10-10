@@ -26,7 +26,6 @@ namespace WinUINotes.Views
                 if (Frame.CanGoBack)
                 {
                     Frame.GoBack();
-                    WeakReferenceMessenger.Default.Unregister<NoteDeletedMessage>(this);
                 }
             });
         }
