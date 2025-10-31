@@ -1,50 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Windows.Storage;
-using WinUINotes.Models;
+using WinUINotes.Services;
 
 namespace WinUINotes.Models
 {
     public class AllNotes
     {
-        public ObservableCollection<Note> Notes { get; set; } =
-                                    new ObservableCollection<Note>();
+        private IFileService fileService;
+        public ObservableCollection<Note> Notes { get; set; } = [];
 
-        public AllNotes()
+        public AllNotes(IFileService fileService)
         {
-            LoadNotes();
+            this.fileService = fileService;
         }
 
-        public async void LoadNotes()
+        public async Task LoadNotes()
         {
             Notes.Clear();
-            // Get the folder where the notes are stored.
-            StorageFolder storageFolder =
-                          ApplicationData.Current.LocalFolder;
-            await GetFilesInFolderAsync(storageFolder);
+            await GetFilesInFolderAsync(fileService.GetLocalFolder());
         }
 
-        private async Task GetFilesInFolderAsync(StorageFolder folder)
+        private async Task GetFilesInFolderAsync(IStorageFolder folder)
         {
             // Each StorageItem can be either a folder or a file.
             IReadOnlyList<IStorageItem> storageItems =
-                                        await folder.GetItemsAsync();
+                                        await fileService.GetStorageItemsAsync(folder);
             foreach (IStorageItem item in storageItems)
             {
                 if (item.IsOfType(StorageItemTypes.Folder))
                 {
                     // Recursively get items from subfolders.
-                    await GetFilesInFolderAsync((StorageFolder)item);
+                    await GetFilesInFolderAsync((IStorageFolder)item);
                 }
                 else if (item.IsOfType(StorageItemTypes.File))
                 {
-                    StorageFile file = (StorageFile)item;
-                    Note note = new Note()
+                    IStorageFile file = (IStorageFile)item;
+                    Note note = new(fileService)
                     {
                         Filename = file.Name,
-                        Text = await FileIO.ReadTextAsync(file),
+                        Text = await fileService.GetTextFromFileAsync(file),
                         Date = file.DateCreated.DateTime
                     };
                     Notes.Add(note);

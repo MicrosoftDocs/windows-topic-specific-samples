@@ -21,11 +21,11 @@
         </Grid.ColumnDefinitions>
 
         <TextBox x:Name="NoteEditor"
-             Text="{x:Bind noteModel.Text, Mode=TwoWay}"
+             Text="{x:Bind noteVm.Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
              AcceptsReturn="True"
              TextWrapping="Wrap"
              PlaceholderText="Enter your note"
-             Header="{x:Bind noteModel.Date.ToString()}"
+             Header="{x:Bind noteVm.Date.ToString()}"
              ScrollViewer.VerticalScrollBarVisibility="Auto"
              MaxWidth="400"
              Grid.Column="1"/>
@@ -34,8 +34,8 @@
                 HorizontalAlignment="Right"
                 Spacing="4"
                 Grid.Row="1" Grid.Column="1">
-            <Button Content="Save" Click="SaveButton_Click"/>
-            <Button Content="Delete" Click="DeleteButton_Click"/>
+            <Button Content="Save" Command="{x:Bind noteVm.SaveCommand}"/>
+            <Button Content="Delete" Command="{x:Bind noteVm.DeleteCommand}"/>
         </StackPanel>
     </Grid>
 </Page>
