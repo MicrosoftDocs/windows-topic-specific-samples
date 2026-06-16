@@ -34,7 +34,14 @@
                 HorizontalAlignment="Right"
                 Spacing="4"
                 Grid.Row="1" Grid.Column="1">
-            <Button Content="Save" Click="SaveButton_Click"/>
+            <SplitButton Content="Save &amp; close" Click="SaveCloseButton_Click"
+                         Height="32">
+                <SplitButton.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Save" Click="SaveButton_Click"/>
+                    </MenuFlyout>
+                </SplitButton.Flyout>
+            </SplitButton>
             <Button Content="Delete" Click="DeleteButton_Click"/>
         </StackPanel>
     </Grid>
