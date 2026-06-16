@@ -8,7 +8,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    NavigationCacheMode="Enabled">
     <Page.Resources>
         <DataTemplate x:Key="NoteItemTemplate" 
                       x:DataType="models:Note">
@@ -21,7 +22,7 @@
                         <RowDefinition Height="120"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="{x:Bind Text}" Margin="4"
+                    <TextBlock Text="{x:Bind Text, Mode=OneWay}" Margin="4"
                                TextWrapping="Wrap"
                                TextTrimming="WordEllipsis"/>
                     <Border Grid.Row="1" Padding="4,6,0,6"

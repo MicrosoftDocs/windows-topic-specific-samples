@@ -45,11 +45,22 @@ namespace WinUINotes.Models
                     {
                         Filename = file.Name,
                         Text = await FileIO.ReadTextAsync(file),
-                        Date = file.DateCreated.DateTime
+                        Date = file.DateCreated.DateTime,
+                        State = NoteState.Saved
                     };
                     Notes.Add(note);
                 }
             }
+        }
+
+        public void AddNote(Note note)
+        {
+            Notes.Insert(0, note);
+        }
+
+        public void RemoveNote(Note note)
+        {
+            Notes.Remove(note);
         }
     }
 }
