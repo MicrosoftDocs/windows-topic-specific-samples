@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="LocalNotes.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LocalNotes">
+    <Grid Padding="24" RowSpacing="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="LocalNotes" Style="{StaticResource TitleTextBlockStyle}" />
+        <StackPanel Grid.Row="1" Spacing="8">
+            <TextBlock Text="A temporary note editor with on-device summaries. Notes are not saved."
+                       TextWrapping="Wrap" />
+            <TextBlock Text="Download consent: the next button downloads Qwen2.5 0.5B (hundreds of MB) and caches it on this PC. Internet access and disk space are required for setup."
+                       Visibility="{x:Bind local:MainPage.InvertBoolToVisibility(ViewModel.IsReady), Mode=OneWay}"
+                       TextWrapping="Wrap" />
+            <Button AutomationProperties.AutomationId="PrepareButton"
+                    Content="Download and prepare model"
+                    Command="{x:Bind ViewModel.PrepareCommand}" />
+            <ProgressBar AutomationProperties.AutomationId="DownloadProgress"
+                         AutomationProperties.Name="Model download progress"
+                         Maximum="100" Value="{x:Bind ViewModel.DownloadProgress, Mode=OneWay}" />
+            <TextBlock AutomationProperties.AutomationId="ModelIdText"
+                       Text="{x:Bind ViewModel.ModelId, Mode=OneWay}"
+                       Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="Wrap" />
+        </StackPanel>
+        <InfoBar Grid.Row="2" AutomationProperties.AutomationId="ErrorInfoBar"
+                 Title="Local AI error" Severity="Error" IsClosable="False"
+                 IsOpen="{x:Bind ViewModel.HasError, Mode=OneWay}"
+                 Message="{x:Bind ViewModel.Error, Mode=OneWay}" />
+        <TextBox Grid.Row="3" AutomationProperties.AutomationId="NoteTextBox"
+                 Header="Your note (up to 4,000 characters)" MinHeight="100"
+                 AcceptsReturn="True" TextWrapping="Wrap" MaxLength="4000"
+                 Text="{x:Bind ViewModel.Note, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Spacing="8">
+            <Button AutomationProperties.AutomationId="SummarizeButton" Content="Summarize"
+                    Style="{StaticResource AccentButtonStyle}"
+                    Command="{x:Bind ViewModel.SummarizeCommand}" />
+            <Button AutomationProperties.AutomationId="CancelButton" Content="Cancel"
+                    Command="{x:Bind ViewModel.SummarizeCancelCommand}" />
+            <ProgressRing AutomationProperties.AutomationId="BusyRing"
+                          AutomationProperties.Name="Local AI operation in progress"
+                          Width="24" Height="24"
+                          IsActive="{x:Bind ViewModel.IsBusy, Mode=OneWay}" />
+        </StackPanel>
+        <TextBox Grid.Row="5" AutomationProperties.AutomationId="SummaryTextBox"
+                 Header="AI summary — may be incorrect. Review before using."
+                 MinHeight="100" IsReadOnly="True" AcceptsReturn="True" TextWrapping="Wrap"
+                 Text="{x:Bind ViewModel.Summary, Mode=OneWay}" />
+        <TextBlock Grid.Row="6" AutomationProperties.AutomationId="StatusText"
+                   AutomationProperties.LiveSetting="Polite"
+                   Text="{x:Bind ViewModel.Status, Mode=OneWay}" TextWrapping="Wrap" />
+    </Grid>
+</Page>
